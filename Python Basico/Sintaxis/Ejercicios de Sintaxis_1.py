@@ -1,0 +1,7 @@
+print("String + String:", "Hello " + "World")
+print("String + Int:", "Age: " + 20)
+print("Int + String:", 20 + " years")
+print("List + List:", [1, 2, 3] + [4, 5, 6])
+print("String + List:", "Hello" + [1, 2, 3])
+print("Float + Int:", 2.5 + 3)
+print("Bool + Bool:", True + True)
