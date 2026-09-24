@@ -1,27 +1,36 @@
 import csv
 
-def save_videogames():
-    quantity = int(input("Cuantos videojuegos desea ingresar?"))
+def get_videogame():
+    name = input("Nombre: ")
+    gender = input("Género: ")
+    coder = input("Desarrollador: ")
+    classification = input("Clasificación ESRB: ")
 
-    with open ("videogames.csv", "w",newline="",encoding="utf-8") as file:
-        writer1 = csv.writer(file,delimiter="\t")
+    return [name, gender, coder, classification]
 
-        writer1.writerow(["nombre","genero","desarrollador","clasificacion"])
 
-        for i in range (quantity):
-            print(f"videogame {i+1}")
+def save_videogames(videogames):
+    with open("videogames.csv", "w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file, delimiter="\t")
 
-            name=input ("nombre: ")
-            gender=input ("genero: ")
-            coder=input ("desarollador: ")
-            clasification=input ("clasificacion ESRB: ")
+        writer.writerow(["nombre", "genero", "desarrollador", "clasificacion"])
 
-            writer1.writerow([
-                name,
-                gender,
-                coder,
-                clasification
-            ])
-    print("Los videojuegos fueron guardados correctamente. ")
+        for videogame in videogames:
+            writer.writerow(videogame)
 
-save_videogames()
+
+def videogame_program():
+    quantity = int(input("¿Cuántos videojuegos desea ingresar? "))
+
+    videogames = []
+
+    for i in range(quantity):
+        print(f"\nVideojuego {i + 1}")
+        videogame = get_videogame()
+        videogames.append(videogame)
+
+    save_videogames(videogames)
+
+    print("Los videojuegos fueron guardados correctamente.")
+
+videogame_program()
